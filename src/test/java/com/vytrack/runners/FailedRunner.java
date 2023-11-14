@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         glue = "com/vytrack/step_definitions",
         features = "@target/rerun.txt",
         plugin = {
-                "html:target/failed-default-report",
+                "html:target/failed-default-report.html",
                 "json:target/failed_report.json",
         }
 

@@ -12,6 +12,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
+
 /**
  * This class will be extended by page classes
  * Ant common webelements/locators can be stored here
@@ -21,7 +23,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 public abstract class TestBase {
     protected WebDriver driver = Driver.getDriver();
-    protected WebDriverWait wait = new WebDriverWait(driver, 25);
+    protected WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(20));
 
     @FindBy(css = "#user-menu > a")
     protected WebElement currentUser;

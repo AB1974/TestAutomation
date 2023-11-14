@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -57,7 +58,7 @@ public class BrowserUtilities {
     public static void waitForPageToLoad(long timeOutInSeconds) {
         ExpectedCondition<Boolean> expectation = driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
         try {
-            WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeOutInSeconds);
+            WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofMillis(2));
             wait.until(expectation);
         } catch (Throwable error) {
             error.printStackTrace();

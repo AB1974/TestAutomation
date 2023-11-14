@@ -9,11 +9,11 @@ import org.junit.runner.RunWith;
         glue = "com/vytrack/step_definitions",
         features = "src/test/resources",
         dryRun = false,
-        strict = false,
+     //   strict = false,
 //        to exclude smoke test scenarios
         tags = "not @smoke_test",
         plugin = {
-                "html:target/default-report-for-regression",
+                "html:target/default-report-for-regression.html",
                 "json:target/cucumber_regression.json",
                 "rerun:target/rerun_regression.txt"
         }

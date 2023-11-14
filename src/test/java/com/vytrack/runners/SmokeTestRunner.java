@@ -9,10 +9,10 @@ import org.junit.runner.RunWith;
         glue = "com/vytrack/step_definitions",
         features = "src/test/resources",
         dryRun = false,
-        strict = false,
+      //  strict = false,
         tags = "@smoke_test",
         plugin = {
-                "html:target/smoke_test_default-report",
+                "html:target/smoke_test_default-report.html",
                 "json:target/cucumber1.json",
                 "rerun:target/rerun.txt"
         }

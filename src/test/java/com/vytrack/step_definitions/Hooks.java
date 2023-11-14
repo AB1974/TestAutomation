@@ -8,6 +8,9 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
+
 public class Hooks {
     private static final Logger logger = Logger.getLogger(Hooks.class);
 
@@ -16,12 +19,15 @@ public class Hooks {
         logger.info("::: STARTING AUTOMATION :::");
         logger.info("Test setup");
         Driver.getDriver().manage().window().maximize();
+      //  Driver.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        Driver.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(10));
     }
 
     @Before(value = "@driver", order = 1)
     public void specialSetup() {
+
         logger.info("Setup for driver only");
-    }
+    } 
 
     @After("@driver")
     public void specialTearDown() {
@@ -35,7 +41,8 @@ public class Hooks {
             TakesScreenshot takesScreenshot = (TakesScreenshot) Driver.getDriver();
             byte[] image = takesScreenshot.getScreenshotAs(OutputType.BYTES);
             //attach screenshot to the report
-            scenario.embed(image, "image/png", scenario.getName());
+         //   scenario.embed(image, "image/png", scenario.getName());
+            scenario.attach(image,"image/png", scenario.getName());
         }
         logger.info("Test clean up");
         Driver.closeDriver();

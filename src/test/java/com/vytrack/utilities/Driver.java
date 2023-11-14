@@ -8,9 +8,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.remote.BrowserType;
+import org.openqa.selenium.remote.*;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import sun.plugin2.util.BrowserType;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -34,7 +35,7 @@ public class Driver {
      * @return
      */
     public synchronized static WebDriver getDriver() {
-        String GRID_URL = "http://3.235.145.39:4444/wd/hub";
+        String GRID_URL = "http://100.26.185.167:4444/wd/hub";
         //if webdriver object doesn't exist
         //create it
         if (driverPool.get() == null) {
@@ -73,7 +74,7 @@ public class Driver {
                         //is required for testing
                         //such as: OS type, browser, version, etc...
                         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-                        desiredCapabilities.setBrowserName(BrowserType.CHROME);
+                        desiredCapabilities.setBrowserName(String.valueOf(BrowserType.DEFAULT));
                         desiredCapabilities.setPlatform(Platform.ANY);
 
                         driverPool.set(new RemoteWebDriver(url, desiredCapabilities));
@@ -91,7 +92,7 @@ public class Driver {
                         //is required for testing
                         //such as: OS type, browser, version, etc...
                         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-                        desiredCapabilities.setBrowserName(BrowserType.FIREFOX);
+                        desiredCapabilities.setBrowserName(String.valueOf(BrowserType.MOZILLA));
                         desiredCapabilities.setPlatform(Platform.ANY);
                         driverPool.set(new RemoteWebDriver(url, desiredCapabilities));
                     } catch (Exception e) {
